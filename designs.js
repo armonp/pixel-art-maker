@@ -1,25 +1,25 @@
-// Select color input
-var color = document.getElementById('colorPicker').value;
-// Select size input
-var height = document.getElementById('input_height').value;
-var width = document.getElementById('input_width').value;
-// When size is submitted by the user, call makeGrid()
-document.getElementByIdfunction("sizePicker").addEventListner("submit"), function(){
-    makeGrid(height, width) {
-    var pixelCanvas = document.getElementById('pixel_canvas');
-// Your code goes here!
-var grid = ''; //starts string that will be canvas
-for (var h = 0; h < height; h++){
-  grid += '<tr>';
-    function makeGrid() {
-    for (var w = 0; w < width; w++){
-        grid += '<td></td>';
-      }
-      grid += '</tr>';
+//define row and col as global variables
+var row;
+var col;
+//define makeGrid
+function makeGrid() {
+  let canvas = document.getElementById("pixel_canvas");
+  canvas.innerHTML = ""; //sets canvas string to empty at the start of the function
+  row = document.getElementById("input_height").value;
+  col = document.getElementById("input_width").value;
+  for (var i = 0; i < row; i++) { //iterates of inputs height and width to build canvas
+    var grid = canvas.insertRow(i);
+    for (var j = 0; j < col; j++) {
+      var cell = grid.insertCell(j);
+      //Event listner to change color of targeted cells
+      cell.addEventListener('click', function (evt) {
+        evt.target.style.backgroundColor = document.getElementById("colorPicker").value;
+      });
     }
-    pixelCanvas.innerHTML = grid; //adds newly created grid to html pixel_canvas element
-
-}
-}
-}
-//Add Event Listners
+  }
+};
+//event listner to run makeGrid
+document.getElementById("sizePicker").addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  makeGrid();
+});
