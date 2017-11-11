@@ -5,12 +5,12 @@ var col;
 function makeGrid() {
   let canvas = document.getElementById("pixel_canvas");
   canvas.innerHTML = ""; //sets canvas string to empty at the start of the function
-  row = document.getElementById("input_height").value;
-  col = document.getElementById("input_width").value;
-  for (var i = 0; i < row; i++) { //iterates of inputs height and width to build canvas
-    var grid = canvas.insertRow(i);
-    for (var j = 0; j < col; j++) {
-      var cell = grid.insertCell(j);
+  height = document.getElementById("input_height").value;
+  width = document.getElementById("input_width").value;
+  for (var h = 0; h < height; h++) { //iterates of inputs height and width to build canvas
+    var grid = canvas.insertRow(h);
+    for (var w = 0; w < width; w++) {
+      var cell = grid.insertCell(w);
       //Event listner to change color of targeted cells
       cell.addEventListener('click', function (evt) {
         evt.target.style.backgroundColor = document.getElementById("colorPicker").value;
